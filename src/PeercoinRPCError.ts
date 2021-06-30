@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
 
-export class BitcoinJsonRpcError extends Error {
+export class PeercoinRPCError extends Error {
   /**
    * Whether the command executed. true is definiyely yes, false if definitely no, else null
    */
@@ -16,7 +16,7 @@ export class BitcoinJsonRpcError extends Error {
       {},
       inner.data,
       {
-        bitcoinJsonRpc: {
+        PeercoinRPC: {
           executed,
         },
       },

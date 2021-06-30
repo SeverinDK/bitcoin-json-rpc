@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import createDebug from 'debug';
 import { throwIfErrorInResponseDataWithExtraProps, maybeShortenErrorMessage } from './utils';
 
-const debug = createDebug('bitcoin-json-rpc');
+const debug = createDebug('peercoin-rpc');
 
 const MAX_LOG_LENGTH = 250;
 

@@ -1,4 +1,4 @@
-export interface CreateBitcoinJsonRpcOptions {
+export interface CreatePeercoinRPCOptions {
   ancient?: boolean;
 }
 

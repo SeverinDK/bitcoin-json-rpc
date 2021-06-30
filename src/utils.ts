@@ -5,7 +5,7 @@ import { ActuallyThrowReporter } from './ActuallyThrowReporter';
 
 const MAX_ERROR_MESSAGE_LENGTH = 150;
 
-const debug = createDebug('bitcoin-json-rpc');
+const debug = createDebug('peercoin-rpc');
 
 export const maybeShortenErrorMessage = (value: string) => value.substr(0, MAX_ERROR_MESSAGE_LENGTH);
 
@@ -85,13 +85,6 @@ export const PURE_METHODS = [
   'getrawmempool',
   'validateaddress',
   'getbalance',
-  'omni_getwalletaddressbalances',
-  'omni_gettransaction',
-  'omni_listpendingtransactions',
-  'z_getoperationresult',
-  'z_getbalance',
-  'z_validateaddress',
-  'z_listunspent',
   'listunspent',
   'dumpprivkey',
   'gettransaction',
@@ -116,7 +109,6 @@ export const getWasExecutedFromError = (method: string, error: Error) => {
     /Rewinding blocks/,
     /Invalid amount/,
     /^Activating best chain/,
-    /^Parsing Omni Layer transactions/,
     /^Upgrading/,
     /^Error committing transaction/,
   ];
@@ -135,14 +127,6 @@ export const getShouldRetry = (method: string, error: Error) => {
   }
 
   if (method === 'gettransaction' && error.message.match(/Invalid or non-wallet transaction id/)) {
-    return false;
-  }
-
-  if (method.match(/^omni_/) && error.message.match(/Error creating transaction/)) {
-    return false;
-  }
-
-  if (method.match(/^omni_/) && error.message.match(/Error choosing inputs/)) {
     return false;
   }
 

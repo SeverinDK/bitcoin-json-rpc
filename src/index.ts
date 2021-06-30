@@ -1,6 +1,6 @@
-import BitcoinJsonRpc from './BitcoinJsonRpc';
+import PeercoinRPC from './PeercoinRPC';
 export * from './json-rpc';
 export * from './types';
-export * from './BitcoinJsonRpcError';
+export * from './PeercoinRPCError';
 export * as decoders from './decoders';
-export default BitcoinJsonRpc;
+export default PeercoinRPC;

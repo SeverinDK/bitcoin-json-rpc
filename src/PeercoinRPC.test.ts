@@ -1,5 +1,5 @@
 import { jsonRpcCmd } from './json-rpc';
-import BitcoinJsonRpc from './BitcoinJsonRpc';
+import PeercoinRPC from './PeercoinRPC';
 
 jest.mock('delay');
 
@@ -7,8 +7,8 @@ jest.mock('./json-rpc', () => ({
   jsonRpcCmd: jest.fn(),
 }));
 
-describe('bitcoin-json-rpc', () => {
-  const rpc = new BitcoinJsonRpc('https://localhost');
+describe('peercoin-rpc', () => {
+  const rpc = new PeercoinRPC('https://localhost');
 
   // When there's not enough funds there's no reason to retry
   it('should not retry insufficient funds', () => {
@@ -22,9 +22,9 @@ describe('bitcoin-json-rpc', () => {
     });
 
     return rpc.sendToAddress('1Bitcoin', '1.2').catch((error) => {
-      const { bitcoinJsonRpc } = error.data;
-      expect(bitcoinJsonRpc.methodIsPure).toBe(false);
-      expect(bitcoinJsonRpc.attempts).toBe(1);
+      const { PeercoinRPC } = error.data;
+      expect(PeercoinRPC.methodIsPure).toBe(false);
+      expect(PeercoinRPC.attempts).toBe(1);
       expect(error.executed).toBe(false);
     });
   });
