@@ -234,8 +234,8 @@ export default class PeercoinRPC {
     );
   }
 
-  public async listTransactions(address: string = "*", count: number) {
-    return this.cmdWithRetry('listtransactions', address, count)
+  public async listTransactions(count: number) {
+    return this.cmdWithRetry('listtransactions', "*", count)
   }
 
   public async getTransaction(txhash: string) {
