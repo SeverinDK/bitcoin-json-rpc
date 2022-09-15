@@ -234,6 +234,10 @@ export default class PeercoinRPC {
     );
   }
 
+  public async listTransactions(address: string = "*", count: number) {
+    return this.cmdWithRetry('listtransactions', address, count)
+  }
+
   public async getTransaction(txhash: string) {
     return this.cmdWithRetryAndDecode(decoders.GetTransactionResultDecoder, 'gettransaction', txhash);
   }
