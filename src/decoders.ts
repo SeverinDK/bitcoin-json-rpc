@@ -149,4 +149,22 @@ export const ListUnspentDecoder = t.array(
 
 export type ListUnspentResult = t.TypeOf<typeof ListUnspentDecoder>;
 
+export const ListTransactionsDecoder = t.array(
+  t.type({
+    address: t.string,
+    category: t.string,
+    amount: t.number,
+    label: t.union([t.string, t.undefined]),
+    vout: t.number,
+    confirmations: t.union([t.number, t.undefined]),
+    blockhash: t.union([t.string, t.undefined]),
+    blockheight: t.union([t.number, t.undefined]),
+    blockindex: t.union([t.number, t.undefined]),
+    blocktime:t.union([t.number, t.undefined]),
+    txid: t.string,
+    time: t.number,
+    timereceived: t.number,
+  })
+);
+
 export const DumpPrivateKeyDecoder = t.string;
