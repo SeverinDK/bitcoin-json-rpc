@@ -160,7 +160,7 @@ export const ListTransactionsDecoder = t.array(
     blockhash: t.union([t.string, t.undefined]),
     blockheight: t.union([t.number, t.undefined]),
     blockindex: t.union([t.number, t.undefined]),
-    blocktime:t.union([t.number, t.undefined]),
+    blocktime: t.union([t.number, t.undefined]),
     txid: t.string,
     time: t.number,
     timereceived: t.number,
