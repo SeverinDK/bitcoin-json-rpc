@@ -116,7 +116,7 @@ export default class PeercoinRPC {
       // Argument #4
       params.push(comment ?? '', commentTo);
     } else if (commentTo) {
-      // Argument #3 
+      // Argument #3
       params.push(comment);
     }
 
@@ -235,7 +235,7 @@ export default class PeercoinRPC {
   }
 
   public async listTransactions(count: number) {
-    return this.cmdWithRetry('listtransactions', "*", count)
+    return this.cmdWithRetryAndDecode(decoders.ListTransactionsDecoder, 'listtransactions', "*", count)
   }
 
   public async getTransaction(txhash: string) {
